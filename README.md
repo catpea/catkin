@@ -5,17 +5,17 @@ Catkin helps you manage color using the HSLuv color scale, a human-friendly alte
 
 ## Usage
 
-catkin is a command-line program that reads a list of hexadecimal color codes from the stdin
+catkin is a command-line program that reads a list of hexadecimal (or rgb) colors and smartly transforms their luminosity or saturation.
 
 See colors.txt for data file example.
 
 ```sh
 
-cat colors.txt | catkin -s 10 # set HSLuv saturation to 10
-cat colors.txt | catkin -l 10 # set HSLuv luminosity to 10
+catkin -s 10 colors.txt # set HSLuv saturation to 10
+catkin -l 10 colors.txt # set HSLuv luminosity to 10
 
-cat colors.txt | catkin -saturation 10 # set HSLuv saturation to 10
-cat colors.txt | catkin -luminosity 10 # set HSLuv luminosity to 10
+catkin -saturation 10 colors.txt # set HSLuv saturation to 10
+catkin -luminosity 10 colors.txt # set HSLuv luminosity to 10
 
 
 ```
