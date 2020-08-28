@@ -17,8 +17,23 @@ program
 program.parse(process.argv);
 
 let source = 0;
-const file = path.join( process.cwd(), program.args.pop() );
-if(fs.pathExistsSync(file)) source = file;
+
+const reference = program.args.pop();
+if(reference){
+  let location;
+  if(reference.startsWith('/')){
+    location = reference;
+  }else{
+    location = path.join( process.cwd(), reference );
+  }
+  if(fs.pathExistsSync(location)){
+    source = location;
+  }else{
+    console.error(`File not found: ${location}`);
+    process.exit(1);
+  }
+}
+
 const data = fs.readFileSync(source, 'utf-8').toString();
 
 let transformed = data
